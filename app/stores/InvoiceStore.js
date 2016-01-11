@@ -48,7 +48,7 @@ class InvoiceStore extends EventEmitter {
     removeChangeListener(callback) {
         // HACK
         //this.removeListener(callback);
-        this.removeListener(this.CHANGE_EVENT, callback);
+        this.removeAllListeners(this.CHANGE_EVENT);
     }
 }
 

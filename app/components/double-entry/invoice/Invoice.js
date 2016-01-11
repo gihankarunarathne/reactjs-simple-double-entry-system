@@ -15,6 +15,10 @@ class Invoice extends React.Component {
             invoiceNo: InvoiceStore.getNextId(),
             customerName : "Customer's Name",
             itemList: [],
+            subTotal: 0,
+            tax: 0,
+            shipping: 0,
+            total: 0,
             date: Date.now(),
             newItem: {
                 quantity:1,
@@ -101,13 +105,13 @@ class Invoice extends React.Component {
                     <div className="col-md-3 col-md-offset-5">
                         <dl className="dl-horizontal">
                           <dt>Sub Total :</dt>
-                          <dd>123</dd>
+                          <dd>{this.state.subTotal}</dd>
                           <dt>Sales Tax :</dt>
-                          <dd>123</dd>
+                          <dd><input type="number" placeholder="Tax percentage" min="0" ref={val => {this.newTax = val;}} onChange={this._onTaxChange.bind(this)}></input></dd>
                           <dt>Shipping Charges :</dt>
-                          <dd>123</dd>
+                          <dd><input type="number" placeholder="Shipping Charges" min="0" ref={val => {this.newShipping = val;}} onChange={this._onTaxChange.bind(this)}></input></dd>
                           <dt>Total :</dt>
-                          <dd>123</dd>
+                          <dd>{this.state.total}</dd>
                         </dl>
                     </div>
                 </div>
@@ -126,6 +130,29 @@ class Invoice extends React.Component {
         } else {
             state.customerName = "Customer's Name";
         }
+        this.setState(state);
+    }
+
+    _onTaxChange(e) {
+        e.preventDefault();
+        let state = this.state;
+        let subTotal = 0;
+        for(let item of state.itemList) {
+            subTotal += item.amount;
+        }
+        state.subTotal = subTotal;
+        let tax = 0;
+        if(this.newTax.value && !isNaN(this.newTax.value)) {
+            tax = subTotal * parseFloat(this.newTax.value);
+            state.tax = parseFloat(this.newTax.value);
+        }
+        let shipping = 0;
+        if(this.newShipping.value && !isNaN(this.newShipping.value)) {
+            shipping = parseFloat(this.newShipping.value);
+            state.shipping = parseFloat(this.newShipping.value);
+        }
+        let total = subTotal + tax + shipping;
+        state.total = total;
         this.setState(state);
     }
 
@@ -158,6 +185,26 @@ class Invoice extends React.Component {
             unitPrice:0,
             amount:0
         };
+
+        // Calculate Taxes
+        let subTotal = 0;
+        for(let item of state.itemList) {
+            subTotal += item.amount;
+        }
+        state.subTotal = subTotal;
+        let tax = 0;
+        if(this.newTax.value && !isNaN(this.newTax.value)) {
+            tax = subTotal * parseFloat(this.newTax.value);
+            state.tax = parseFloat(this.newTax.value);
+        }
+        let shipping = 0;
+        if(this.newShipping.value && !isNaN(this.newShipping.value)) {
+            shipping = parseFloat(this.newShipping.value);
+            state.shipping = parseFloat(this.newShipping.value);
+        }
+        let total = subTotal + tax + shipping;
+        state.total = total;
+
         this.setState(state);
     }
 
@@ -166,6 +213,23 @@ class Invoice extends React.Component {
         let state = this.state;
         delete state.newItem;
         InvoiceActions.addInvoice(state);
+        // Reset
+        this.setState({
+            invoiceNo: InvoiceStore.getNextId(),
+            customerName : "Customer's Name",
+            itemList: [],
+            subTotal: 0,
+            tax: 0,
+            shipping: 0,
+            total: 0,
+            date: Date.now(),
+            newItem: {
+                quantity:1,
+                description: '',
+                unitPrice:0,
+                amount:0
+            }
+        });
     }
 }
 
