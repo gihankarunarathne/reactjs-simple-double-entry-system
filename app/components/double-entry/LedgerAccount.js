@@ -20,7 +20,7 @@ class LedgerAccount extends React.Component {
     }
 
     render () {
-        console.log('Legder: ', InvoiceStore.getAll());
+        console.log('Legder: ', this.state.invoiceList);
         let sales = 0;
         let list = this.state.invoiceList.map((invoice, index) => {
             sales += invoice.total;

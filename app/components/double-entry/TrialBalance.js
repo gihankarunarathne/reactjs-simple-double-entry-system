@@ -7,6 +7,9 @@ import InvoiceStore from '../../stores/InvoiceStore';
 class TrialBalance extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            invoiceList: InvoiceStore.getAll()
+        };
     }
 
     componentDidMount() {
@@ -17,6 +20,19 @@ class TrialBalance extends React.Component {
     }
 
     render () {
+        console.log('Trial Balance: ', this.state.invoiceList);
+        let sales = 0;
+        let list = this.state.invoiceList.map((invoice, index) => {
+            sales += invoice.total;
+            return (
+                <tr key={index}>
+                  <td>{invoice.customerName}</td>
+                  <td>{invoice.total}</td>
+                  <td></td>
+                </tr>
+            );
+        });
+
         return (
             <div className="row">
                 <p className="text-center">Trial Balance</p>
@@ -31,10 +47,11 @@ class TrialBalance extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
+                        {list}
                       <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
+                        <td>Sales</td>
+                        <td></td>
+                        <td>{sales}</td>
                       </tr>
                     </tbody>
                 </table>
