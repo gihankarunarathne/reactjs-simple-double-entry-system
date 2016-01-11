@@ -12,7 +12,7 @@ import React, {
 }
 from 'react';
 // import COMPONENTS
-import User from './user/User';
+import NavBar from './dashboard/NavBar';
 // import ACTIONS
 // import  STORES
 
@@ -25,11 +25,11 @@ class Main extends React.Component {
     render() {
         return(
             <div className="container-fluid">
-                <User></User>
+                <NavBar></NavBar>
                 {this.props.children}
                 <div id="info" className="row">
-                    <p className="text-center text-muted small">Idea Hub
-                        Copyrights at <em><a href="http://thinkcube.com/">ThinkCube Systems (pvt) Ltd.</a></em></p>
+                    <p className="text-center text-muted small">Double-Entry System
+                        Copyrights at <em><a href="http://abc.com/">ABC (pvt) Ltd.</a></em></p>
                 </div>
             </div>
         );
