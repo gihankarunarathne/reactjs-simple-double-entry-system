@@ -53,6 +53,11 @@ class TrialBalance extends React.Component {
                         <td></td>
                         <td>{sales}</td>
                       </tr>
+                      <tr className="info">
+                        <td>Total</td>
+                        <td>{sales}</td>
+                        <td>{sales}</td>
+                      </tr>
                     </tbody>
                 </table>
             </div>

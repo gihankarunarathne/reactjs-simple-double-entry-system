@@ -7,9 +7,36 @@ class About extends React.Component {
         super(props);
         this.state = {
             members: [{
-                index: "123",
-                name: "abc"
-            }]
+                    "index": "144061F",
+                    "name": "Gunasekara M. M. J."
+                }, {
+                    "index": "144067E",
+                    "name": "Harankahawa H. S. B. D. B."
+                }, {
+                    "index": "144049C",
+                    "name": "Fauzil M. A."
+                }, {
+                    "index": "144208N",
+                    "name": "Karunarathne H.M.M.H."
+                }, {
+                    "index": "144219A",
+                    "name": "Peiris H.R.R."
+                }, {
+                    "index": "144229E",
+                    "name": "Sithumini B.S.D."
+                }, {
+                    "index": "144240E",
+                    "name": "P.S.S. De Silva"
+                }, {
+                    "index": "144150D",
+                    "name": "Saajitha A.K.S."
+                }, {
+                    "index": "144015U",
+                    "name": "Asna A.A."
+                }, {
+                    "index": "144189E",
+                    "name": "Welikala J.S."
+                }]
         };
     }
 
