@@ -19,7 +19,7 @@ Setup guide for **Linux** systems
 
 - **Other dependancies**
   - Install `git` using `sudo apt-get install git`
-  - Install Bower globally (if it's not installed) using `npm install -g bower`
+  - Install `Bower` globally (if it's not installed) using `npm install -g bower`
 
 
 ## Installation
