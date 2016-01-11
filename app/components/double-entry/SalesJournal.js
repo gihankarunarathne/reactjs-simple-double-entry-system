@@ -26,9 +26,37 @@ class SalesJournal extends React.Component {
 
         return (
             <div className="row">
-                <div className="col-md-6 col-md-offset-2">
-                    SalesJournal
-                </div>
+                <table className="table table-striped table-bordered">
+                    <thead>
+                      <tr className="success">
+                        <th className="col-md-1">Date</th>
+                        <th className="col-md-1">Invoice No</th>
+                        <th className="col-md-2">Customer</th>
+                        <th colSpan="4" className="col-md-6"></th>
+                        <th className="col-md-1">Total Value</th>
+                      </tr>
+                      <tr className="info">
+                          <th colSpan="3"></th>
+                          <th className="col-md-3">Description</th>
+                          <th className="col-md-1">Qty</th>
+                          <th className="col-md-1">Unit Price</th>
+                          <th className="col-md-1">Value</th>
+                          <th className="col-md-1"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                        <td>john@example.com</td>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                        <td>john@example.com</td>
+                      </tr>
+                    </tbody>
+                </table>
             </div>
         );
     }
