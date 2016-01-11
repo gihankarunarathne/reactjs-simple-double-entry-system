@@ -2,7 +2,20 @@
 
 import React, { PropTypes } from 'react';
 
+import InvoiceStore from '../../stores/InvoiceStore';
+
 class LedgerAccount extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        InvoiceStore.addChangeListener(this._onChange.bind(this));
+    }
+    componentWillUnmount() {
+        InvoiceStore.removeChangeListener(this._onChange.bind(this));
+    }
+
     render () {
         return (
             <div className="row">
@@ -24,6 +37,11 @@ class LedgerAccount extends React.Component {
             </div>
         );
     }
+
+    _onChange() {
+
+    }
+
 }
 
 export default LedgerAccount;

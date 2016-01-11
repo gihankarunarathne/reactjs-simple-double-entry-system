@@ -2,7 +2,20 @@
 
 import React, { PropTypes } from 'react';
 
+import InvoiceStore from '../../stores/InvoiceStore';
+
 class TrialBalance extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        InvoiceStore.addChangeListener(this._onChange.bind(this));
+    }
+    componentWillUnmount() {
+        InvoiceStore.removeChangeListener(this._onChange.bind(this));
+    }
+
     render () {
         return (
             <div className="row">
@@ -27,6 +40,10 @@ class TrialBalance extends React.Component {
                 </table>
             </div>
         );
+    }
+
+    _onChange() {
+
     }
 }
 

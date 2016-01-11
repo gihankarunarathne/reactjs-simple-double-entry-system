@@ -10,7 +10,7 @@
 import axios from 'axios';
 
 import Dispatcher from '../dispatcher/Dispatcher';
-import EntryConstants from '../constants/EntryConstants';
+import InvoiceConstants from '../constants/InvoiceConstants';
 
 class EntryActions {
     constructor() {}
@@ -21,10 +21,10 @@ class EntryActions {
     static addInvoice(invoice) {
         console.log('addInvoice : ', invoice);
 
-                Dispatcher.dispatch({
-                    actionType: EntryConstants.NEW_INVOICE,
-                    invoice: invoice
-                });
+        Dispatcher.dispatch({
+            actionType: InvoiceConstants.NEW_INVOICE,
+            invoice: invoice
+        });
     }
 }
 

@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 import { Router, Route, Link, IndexRoute } from 'react-router';
 // import COMPONENTS
 import Main from '../components/Main';
-import Invoice from '../components/double-entry/Invoice';
+import Invoice from '../components/double-entry/invoice/Invoice';
 import LedgerAccount from '../components/double-entry/LedgerAccount';
 import SalesJournal from '../components/double-entry/SalesJournal';
 import TrialBalance from '../components/double-entry/TrialBalance';

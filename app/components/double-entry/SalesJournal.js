@@ -5,21 +5,22 @@ import React, { PropTypes } from 'react';
 // import Actions
 import InvoiceActions from '../../actions/InvoiceActions';
 // import Stores
-import EntryStore from '../../stores/EntryStore';
+import InvoiceStore from '../../stores/InvoiceStore';
 // import Components
 
 class SalesJournal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            entryList: EntryStore.getAll()
+            entryList: InvoiceStore.getAll()
         };
     }
 
     componentDidMount() {
+        InvoiceStore.addChangeListener(this._onChange.bind(this));
     }
-
     componentWillUnmount() {
+        InvoiceStore.removeChangeListener(this._onChange.bind(this));
     }
 
     render () {
