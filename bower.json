@@ -1,0 +1,27 @@
+{
+  "name": "reactjs-simple-double-entry-system",
+  "version": "0.0.1",
+  "homepage": "https://github.com/gihankarunarathne/reactjs-simple-double-entry-system.git",
+  "authors": [
+    "Gihan Karunarathne <gckarunarathne@gmail.com>"
+  ],
+  "description": "A simple Double-Entry Bookkeeping system (only for academic purposes).",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "keywords": [
+    "double-entry",
+    "accounting"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}

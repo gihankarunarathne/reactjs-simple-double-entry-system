@@ -1,0 +1,22 @@
+module.exports = {
+    entry: {
+        app: './app/App.js'
+    },
+    output: {
+        path: '../public/js',
+        filename: '[name].js'
+    },
+    module: {
+        loaders: [{
+            test: /\.jsx?$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'babel-loader'
+        }, {
+            test: /\.css$/,
+            loader: 'style-loader!css-loader'
+        }]
+    },
+    debug: true,
+    devtool: 'source-map',
+    plugins: []
+};
