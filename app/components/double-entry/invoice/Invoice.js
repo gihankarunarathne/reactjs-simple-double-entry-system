@@ -99,7 +99,7 @@ class Invoice extends React.Component {
                 </div>
 
                 <div className="row">
-                    <div className="col-md-3 col-md-offset-1">
+                    <div className="col-md-2 col-md-offset-1">
                         <button type="submit" className="btn btn-primary btn-lg" onClick={this._onCreateInvoice.bind(this)}>Create Invoice</button>
                     </div>
                     <div className="col-md-3 col-md-offset-5">
@@ -185,6 +185,9 @@ class Invoice extends React.Component {
             unitPrice:0,
             amount:0
         };
+        this.newQuantity.value = 1;
+        this.newDescription.value = '';
+        this.newUnitPrice.value = 0;
 
         // Calculate Taxes
         let subTotal = 0;

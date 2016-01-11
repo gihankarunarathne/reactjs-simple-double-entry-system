@@ -3,16 +3,17 @@
 import React, { PropTypes } from 'react';
 
 // import Actions
-import InvoiceActions from '../../actions/InvoiceActions';
+import InvoiceActions from '../../../actions/InvoiceActions';
 // import Stores
-import InvoiceStore from '../../stores/InvoiceStore';
+import InvoiceStore from '../../../stores/InvoiceStore';
 // import Components
+import Journal from './Journal';
 
 class SalesJournal extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            entryList: InvoiceStore.getAll()
+            invoiceList: InvoiceStore.getAll()
         };
     }
 
@@ -24,6 +25,13 @@ class SalesJournal extends React.Component {
     }
 
     render () {
+        let tot = 0;
+        let list = this.state.invoiceList.map((invoice, index) => {
+            tot += (invoice.total * (1 - 0.1));
+            return (
+                <Journal key={index} invoice={invoice}></Journal>
+            );
+        });
 
         return (
             <div className="row">
@@ -45,16 +53,11 @@ class SalesJournal extends React.Component {
                           <th className="col-md-1"></th>
                       </tr>
                     </thead>
+                    {list}
                     <tbody>
                       <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                        <td>john@example.com</td>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                        <td>john@example.com</td>
+                          <td colSpan="7" className="text-center">Transfered to Sales A/C</td>
+                          <td>{tot}</td>
                       </tr>
                     </tbody>
                 </table>

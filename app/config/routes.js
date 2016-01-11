@@ -8,7 +8,7 @@ import { Router, Route, Link, IndexRoute } from 'react-router';
 import Main from '../components/Main';
 import Invoice from '../components/double-entry/invoice/Invoice';
 import LedgerAccount from '../components/double-entry/LedgerAccount';
-import SalesJournal from '../components/double-entry/SalesJournal';
+import SalesJournal from '../components/double-entry/sales-journal/SalesJournal';
 import TrialBalance from '../components/double-entry/TrialBalance';
 import About from '../components/double-entry/About';
 
