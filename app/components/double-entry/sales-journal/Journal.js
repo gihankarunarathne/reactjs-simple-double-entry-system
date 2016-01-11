@@ -53,11 +53,20 @@ class Journal extends React.Component {
                   <td></td>
                   <td>Trade Discount</td>
                   <td></td>
-                  <td>10%</td>
-                  <td>({this.props.invoice.total * 0.1})</td>
-                  <td>{this.props.invoice.total * (1 - 0.1)}</td>
+                  <td>{this.props.invoice.discount} %</td>
+                  <td>({this.props.invoice.total * this.props.invoice.discount})</td>
+                  <td>{this.props.invoice.total * (1 - this.props.invoice.discount)}</td>
                 </tr>
-                <tr></tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </tbody>
         );
     }

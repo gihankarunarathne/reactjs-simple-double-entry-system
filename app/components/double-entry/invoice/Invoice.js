@@ -17,6 +17,7 @@ class Invoice extends React.Component {
             itemList: [],
             subTotal: 0,
             tax: 0,
+            discount: 0,
             shipping: 0,
             total: 0,
             date: Date.now(),
@@ -107,9 +108,11 @@ class Invoice extends React.Component {
                           <dt>Sub Total :</dt>
                           <dd>{this.state.subTotal}</dd>
                           <dt>Sales Tax :</dt>
-                          <dd><input type="number" placeholder="Tax percentage" min="0" ref={val => {this.newTax = val;}} onChange={this._onTaxChange.bind(this)}></input></dd>
+                          <dd><input type="number" placeholder="Tax percentage" min="0" max="200" ref={val => {this.newTax = val;}} onChange={this._onTaxChange.bind(this)}></input>%</dd>
+                          <dt>Discount :</dt>
+                          <dd><input type="number" placeholder="Discount" min="0" max="100" ref={val => {this.newDiscount = val;}} onChange={this._onTaxChange.bind(this)}></input>%</dd>
                           <dt>Shipping Charges :</dt>
-                          <dd><input type="number" placeholder="Shipping Charges" min="0" ref={val => {this.newShipping = val;}} onChange={this._onTaxChange.bind(this)}></input></dd>
+                          <dd><input type="number" placeholder="Shipping Charges" min="0" max="100000" ref={val => {this.newShipping = val;}} onChange={this._onTaxChange.bind(this)}></input></dd>
                           <dt>Total :</dt>
                           <dd>{this.state.total}</dd>
                         </dl>
@@ -143,15 +146,20 @@ class Invoice extends React.Component {
         state.subTotal = subTotal;
         let tax = 0;
         if(this.newTax.value && !isNaN(this.newTax.value)) {
-            tax = subTotal * parseFloat(this.newTax.value);
-            state.tax = parseFloat(this.newTax.value);
+            tax = subTotal * parseFloat(this.newTax.value / 100);
+            state.tax = parseFloat(this.newTax.value / 100);
+        }
+        let discount = 0;
+        if(this.newDiscount.value && !isNaN(this.newDiscount.value)) {
+            discount = subTotal * parseFloat(this.newDiscount.value / 100);
+            state.discount = parseFloat(this.newDiscount.value / 100);
         }
         let shipping = 0;
         if(this.newShipping.value && !isNaN(this.newShipping.value)) {
             shipping = parseFloat(this.newShipping.value);
             state.shipping = parseFloat(this.newShipping.value);
         }
-        let total = subTotal + tax + shipping;
+        let total = subTotal + tax - discount + shipping;
         state.total = total;
         this.setState(state);
     }
@@ -197,15 +205,20 @@ class Invoice extends React.Component {
         state.subTotal = subTotal;
         let tax = 0;
         if(this.newTax.value && !isNaN(this.newTax.value)) {
-            tax = subTotal * parseFloat(this.newTax.value);
-            state.tax = parseFloat(this.newTax.value);
+            tax = subTotal * parseFloat(this.newTax.value / 100);
+            state.tax = parseFloat(this.newTax.value / 100);
+        }
+        let discount = 0;
+        if(this.newDiscount.value && !isNaN(this.newDiscount.value)) {
+            discount = subTotal * parseFloat(this.newDiscount.value / 100);
+            state.discount = parseFloat(this.newDiscount.value / 100);
         }
         let shipping = 0;
         if(this.newShipping.value && !isNaN(this.newShipping.value)) {
             shipping = parseFloat(this.newShipping.value);
             state.shipping = parseFloat(this.newShipping.value);
         }
-        let total = subTotal + tax + shipping;
+        let total = subTotal - discount + tax + shipping;
         state.total = total;
 
         this.setState(state);

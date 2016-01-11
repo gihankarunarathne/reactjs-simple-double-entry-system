@@ -27,7 +27,7 @@ class SalesJournal extends React.Component {
     render () {
         let tot = 0;
         let list = this.state.invoiceList.map((invoice, index) => {
-            tot += (invoice.total * (1 - 0.1));
+            tot += (invoice.total * (1 - invoice.discount));
             return (
                 <Journal key={index} invoice={invoice}></Journal>
             );
