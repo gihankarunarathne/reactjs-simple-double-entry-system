@@ -32,6 +32,7 @@ class NaveBar extends React.Component {
                             <li><a href="#salesJournal">Sales Journal</a></li>
                             <li><a href="#ledgerAccount">Ledger Account</a></li>
                             <li><a href="#trialBalance">Trail Balance</a></li>
+                            <li><a href="#about">About</a></li>
                           </ul>
                         </div>
                       </div>

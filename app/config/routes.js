@@ -10,6 +10,7 @@ import Invoice from '../components/double-entry/invoice/Invoice';
 import LedgerAccount from '../components/double-entry/LedgerAccount';
 import SalesJournal from '../components/double-entry/SalesJournal';
 import TrialBalance from '../components/double-entry/TrialBalance';
+import About from '../components/double-entry/About';
 
 export default (
     <Route path='/' component={Main}>
@@ -17,5 +18,6 @@ export default (
         <Route path='ledgerAccount' component={LedgerAccount}></Route>
         <Route path='salesJournal' component={SalesJournal}></Route>
         <Route path='trialBalance' component={TrialBalance}></Route>
+        <Route path='about' component={About}></Route>
     </Route>
 );
